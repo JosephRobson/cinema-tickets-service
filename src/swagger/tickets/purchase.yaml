@@ -1,0 +1,11 @@
+post:
+  tags:
+    - tickets
+  summary: Submit an order and purchase a number of tickets
+  operationId: purchaseTickets
+  description: Takes a quantity of tickets and an account ID. If the order passes validation, seats will be booked and account will be charged
+  responses:
+    "201":
+      description: Successful order passed validation, seats were booked and account was charged.
+    "400":
+      description: Invalid order.

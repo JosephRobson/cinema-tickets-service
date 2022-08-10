@@ -1,6 +1,6 @@
 {
-  "name": "cinema-tickets-javascript",
-  "description": "This service exposes several endpoints to allow booking cinema tickets in some imagined deployment",
+  "name": "ticket-booking-service",
+  "description": "This service exposes an endpoint to allow booking cinema tickets in some imagined deployment",
   "version": "1.0.0",
   "engines": {
     "node": ">=16.15.1"
@@ -17,6 +17,7 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-openapi-validator": "^4.13.8"
   }
 }
