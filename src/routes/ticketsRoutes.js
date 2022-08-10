@@ -5,6 +5,8 @@ const ticketsController = new TicketsController();
 
 const ticketsRoutes = Router();
 
-ticketsRoutes.route("/tickets/purchase").post(ticketsController.handlePurchase);
+ticketsRoutes
+  .route("/tickets/purchase")
+  .post(ticketsController.handlePostPurchase);
 
 export default ticketsRoutes;
