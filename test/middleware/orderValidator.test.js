@@ -89,7 +89,7 @@ describe("Order Validator", () => {
 
   test("should not fail an order due to exclusivley adults", () => {
     const allAdults = [new TicketTypeRequest(adultTicketString, 20)];
-    expect(OrderValidator(largeAccountId, allAdults)).toBe(true);
+    expect(OrderValidator(validAccountId, allAdults)).toBe(true);
   });
 
   test("should not fail an order due to mostly children", () => {
@@ -97,7 +97,7 @@ describe("Order Validator", () => {
       new TicketTypeRequest(adultTicketString, 1),
       new TicketTypeRequest(childTicketString, 19),
     ];
-    expect(OrderValidator(largeAccountId, mostlyChildren)).toBe(true);
+    expect(OrderValidator(validAccountId, mostlyChildren)).toBe(true);
   });
 
   test("should not fail an order due to even adults and infants", () => {
@@ -105,6 +105,6 @@ describe("Order Validator", () => {
       new TicketTypeRequest(adultTicketString, 10),
       new TicketTypeRequest(infantTicketString, 10),
     ];
-    expect(OrderValidator(largeAccountId, evenAdultsAndInfants)).toBe(true);
+    expect(OrderValidator(validAccountId, evenAdultsAndInfants)).toBe(true);
   });
 });
