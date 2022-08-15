@@ -1,5 +1,5 @@
 {
-  "name": "ticket-booking-service",
+  "name": "cinema-tickets-service",
   "description": "This service exposes an endpoint to allow booking cinema tickets in some imagined deployment",
   "version": "1.0.0",
   "engines": {

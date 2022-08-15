@@ -1,6 +1,5 @@
 import { OrderValidator } from "../../src/middleware/orderValidator.js";
 import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
-import { TicketValues } from "../../types/tickets.js";
 
 const adultTicketString = "ADULT";
 const childTicketString = "CHILD";
@@ -14,8 +13,6 @@ const validTicketTypeRequests = [
 ];
 
 describe("Order Validator", () => {
-  // Failure Cases
-
   test("should fail an order with a negative accountId", () => {
     const negativeAccountId = -4;
     expect(OrderValidator(negativeAccountId, validTicketTypeRequests)).toBe(
@@ -72,7 +69,6 @@ describe("Order Validator", () => {
     expect(OrderValidator(validAccountId, noAdultsPresent)).toBe(false);
   });
 
-  // Success cases
   test("should return true on a valid order", () => {
     expect(OrderValidator(validAccountId, validTicketTypeRequests)).toBe(true);
   });
