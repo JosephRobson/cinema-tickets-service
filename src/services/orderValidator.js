@@ -1,4 +1,4 @@
-function OrderValidator(accountId, ticketTypeRequests) {
+export default function OrderValidator(accountId, ticketTypeRequests) {
   return (
     ValidateAccountId(accountId) &&
     CheckPresenceOfAdult(ticketTypeRequests) &&
@@ -61,5 +61,3 @@ function CheckTicketsDontExceedMaximum(ticketTypeRequests) {
 
   return totalNumberOfTickets <= maximumTicketsPerOrder;
 }
-
-export { OrderValidator };

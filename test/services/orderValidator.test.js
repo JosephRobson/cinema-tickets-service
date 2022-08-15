@@ -1,4 +1,4 @@
-import { OrderValidator } from "../../src/services/orderValidator.js";
+import OrderValidator from "../../src/services/orderValidator.js";
 import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
