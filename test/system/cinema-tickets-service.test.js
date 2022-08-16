@@ -1,11 +1,15 @@
+import { response } from "express";
 import supertest from "supertest";
 import app from "../../main";
 
 const baseurl = "localhost:3000";
 const request = supertest(app);
-// const request = supertest(baseurl);
 
 describe("cinema-ticket-service", () => {
+  afterAll((done) => {
+    done();
+  });
+
   test("should respond successfully given a valid order", async () => {
     const validBody = {
       accountId: 123,
@@ -15,15 +19,21 @@ describe("cinema-ticket-service", () => {
         infant: 1,
       },
     };
-    const response = await request.post("/v1/tickets/purchase").send(validBody);
 
-    expect(response.status).toBe(201);
+    request
+      .post("/v1/tickets/purchase")
+      .send(validBody)
+      .expect((response) => {
+        expect(response.status).toBe(201);
+        done();
+      });
   });
 
   test("should return a not found error when hitting an invalid endpoint", async () => {
-    const response = await request.get("/invalidurl");
-
-    expect(response.status).toBe(404);
+    request.post("/invalidurl").expect((response) => {
+      expect(response.status).toBe(404);
+      done();
+    });
   });
 
   it("should respond with a bad request given an invalid body", async () => {
@@ -35,10 +45,13 @@ describe("cinema-ticket-service", () => {
         infant: 1,
       },
     };
-    const response = await request
-      .post("/v1/tickets/purchase")
-      .send(invalidBody);
 
-    expect(response.status).toBe(400);
+    request
+      .post("/v1/tickets/purchase")
+      .send(invalidBody)
+      .expect((response) => {
+        expect(response.status).toBe(400);
+        done();
+      });
   });
 });
