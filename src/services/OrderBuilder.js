@@ -1,4 +1,4 @@
-import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
+import TicketTypeRequest from "../pairtest/lib/TicketTypeRequest.js";
 
 export default function orderBuilder(tickets) {
   let orders = [];
