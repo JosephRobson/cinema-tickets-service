@@ -1,12 +1,8 @@
 post:
-  #tags:
-  #  - tickets
   summary: Submit an order and purchase a number of tickets
   x-eov-operation-id: purchaseTickets
   x-eov-operation-handler: "ticketsController"
   requestBody:
-    # description: Takes an account ID and a quantity of tickets. If the order passes validation, seats will be booked and account will be charged
-    # required: true
     content:
       application/json:
         schema:

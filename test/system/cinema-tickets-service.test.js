@@ -14,29 +14,28 @@ describe("cinema-ticket-service", () => {
     const validBody = {
       accountId: 123,
       tickets: {
-        adult: 2,
-        child: 2,
-        infant: 1,
+        adult: 20,
+        child: 0,
+        infant: 0,
       },
     };
 
-    request
+    await request
       .post("/v1/tickets/purchase")
       .send(validBody)
+      .set("Accept", "application/json")
       .expect((response) => {
         expect(response.status).toBe(201);
-        done();
       });
   });
 
   test("should return a not found error when hitting an invalid endpoint", async () => {
-    request.post("/invalidurl").expect((response) => {
+    await request.post("/invalidurl").expect((response) => {
       expect(response.status).toBe(404);
-      done();
     });
   });
 
-  it("should respond with a bad request given an invalid body", async () => {
+  test("should respond with a bad request given an invalid body", async () => {
     const invalidBody = {
       accountId: "NAN",
       tickets: {
@@ -46,12 +45,11 @@ describe("cinema-ticket-service", () => {
       },
     };
 
-    request
+    await request
       .post("/v1/tickets/purchase")
       .send(invalidBody)
       .expect((response) => {
         expect(response.status).toBe(400);
-        done();
       });
   });
 });
