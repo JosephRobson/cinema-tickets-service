@@ -4,7 +4,7 @@ post:
   summary: Submit an order and purchase a number of tickets
   operationId: purchaseTickets
   requestBody:
-    description: Takes a quantity of tickets and an account ID. If the order passes validation, seats will be booked and account will be charged
+    description: Takes an account ID and a quantity of tickets. If the order passes validation, seats will be booked and account will be charged
     required: true
     content:
       application/json:

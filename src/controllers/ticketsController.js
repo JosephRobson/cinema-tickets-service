@@ -11,10 +11,10 @@ export default class TicketsController {
   async handlePostPurchase(req, res, next) {
     console.log(
       "Handling post request to the purchase endpoint with args: ",
-      req.body.accountId,
-      req.body.tickets
+      req?.body?.accountId,
+      req?.body?.tickets
     );
-    const accountId = req.body.accountId;
+    const accountId = req?.body?.accountId;
 
     const order = OrderBuilder(req.body.tickets);
 
