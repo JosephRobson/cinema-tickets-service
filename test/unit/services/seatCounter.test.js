@@ -1,4 +1,4 @@
-import SeatCounter from "../../../src/services/seatCounter.js";
+import seatCounter from "../../../src/services/seatCounter.js";
 import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
@@ -14,14 +14,14 @@ describe("Seat Counter", () => {
     ];
     const expectedSeats = 4;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 
   test("should calculate the correct number of seats when only adults specified", () => {
     const order = [new TicketTypeRequest(adultTicketString, 2)];
     const expectedSeats = 2;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 
   test("should calculate the correct number of seats when only adults and children specified", () => {
@@ -31,7 +31,7 @@ describe("Seat Counter", () => {
     ];
     const expectedSeats = 7;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 
   test("should calculate the correct number of seats when only adults and infants specified", () => {
@@ -41,7 +41,7 @@ describe("Seat Counter", () => {
     ];
     const expectedSeats = 2;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 
   test("should calculate the correct number of seats to book for a large order", () => {
@@ -52,13 +52,13 @@ describe("Seat Counter", () => {
     ];
     const expectedSeats = 20;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 
   test("should calculate the correct number of seats to book for a small order", () => {
     const order = [new TicketTypeRequest(adultTicketString, 1)];
     const expectedSeats = 1;
 
-    expect(SeatCounter(order)).toBe(expectedSeats);
+    expect(seatCounter(order)).toBe(expectedSeats);
   });
 });

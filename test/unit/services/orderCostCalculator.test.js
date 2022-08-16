@@ -1,4 +1,4 @@
-import OrderCostCalculator from "../../../src/services/orderCostCalculator.js";
+import orderCostCalculator from "../../../src/services/orderCostCalculator.js";
 import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
@@ -14,14 +14,14 @@ describe("Order Cost Calculator", () => {
     ];
     const expectedCost = 6000;
 
-    expect(OrderCostCalculator(order)).toBe(expectedCost);
+    expect(orderCostCalculator(order)).toBe(expectedCost);
   });
 
   test("should calculate the correct cost for a order containing only adults", () => {
     const order = [new TicketTypeRequest(adultTicketString, 5)];
     const expectedCost = 10000;
 
-    expect(OrderCostCalculator(order)).toBe(expectedCost);
+    expect(orderCostCalculator(order)).toBe(expectedCost);
   });
 
   test("should calculate the correct cost for an order containing only adults and children", () => {
@@ -31,7 +31,7 @@ describe("Order Cost Calculator", () => {
     ];
     const expectedCost = 12000;
 
-    expect(OrderCostCalculator(order)).toBe(expectedCost);
+    expect(orderCostCalculator(order)).toBe(expectedCost);
   });
 
   test("should calculate the correct cost for an order containing only adults and infants", () => {
@@ -41,7 +41,7 @@ describe("Order Cost Calculator", () => {
     ];
     const expectedCost = 4000;
 
-    expect(OrderCostCalculator(order)).toBe(expectedCost);
+    expect(orderCostCalculator(order)).toBe(expectedCost);
   });
 
   test("should calculate the correct cost for a large order", () => {
@@ -52,6 +52,6 @@ describe("Order Cost Calculator", () => {
     ];
     const expectedCost = 28000;
 
-    expect(OrderCostCalculator(order)).toBe(expectedCost);
+    expect(orderCostCalculator(order)).toBe(expectedCost);
   });
 });

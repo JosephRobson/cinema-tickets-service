@@ -1,4 +1,4 @@
-import OrderBuilder from "../../../src/services/orderBuilder.js";
+import orderBuilder from "../../../src/services/orderBuilder.js";
 import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
@@ -14,14 +14,14 @@ describe("Order Builder", () => {
       new TicketTypeRequest(infantTicketString, 1),
     ];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 
   test("should build the correct order given only adults present", () => {
     const order = { adult: 2 };
     const expectedResponse = [new TicketTypeRequest(adultTicketString, 2)];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 
   test("should build the correct order given no infants", () => {
@@ -31,7 +31,7 @@ describe("Order Builder", () => {
       new TicketTypeRequest(childTicketString, 2),
     ];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 
   test("should build the correct order given no children", () => {
@@ -41,7 +41,7 @@ describe("Order Builder", () => {
       new TicketTypeRequest(infantTicketString, 2),
     ];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 
   test("should build the correct order given many tickets", () => {
@@ -52,13 +52,13 @@ describe("Order Builder", () => {
       new TicketTypeRequest(infantTicketString, 4),
     ];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 
   test("should build the correct order given minimum tickets", () => {
     const order = { adult: 1 };
     const expectedResponse = [new TicketTypeRequest(adultTicketString, 1)];
 
-    expect(OrderBuilder(order)).toStrictEqual(expectedResponse);
+    expect(orderBuilder(order)).toStrictEqual(expectedResponse);
   });
 });

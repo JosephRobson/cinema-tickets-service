@@ -1,4 +1,4 @@
-export default function SeatCounter(ticketTypeRequests) {
+export default function seatCounter(ticketTypeRequests) {
   let seats = 0;
   ticketTypeRequests.forEach((ticket) => {
     switch (ticket.getTicketType()) {

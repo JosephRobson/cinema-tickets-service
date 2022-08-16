@@ -1,6 +1,6 @@
 import { TicketValues } from "../../types/tickets.js";
 
-export default function SumOrderCost(ticketTypeRequests) {
+export default function sumOrderCost(ticketTypeRequests) {
   let runningTotal = 0;
   ticketTypeRequests.forEach((ticket) => {
     runningTotal +=

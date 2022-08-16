@@ -1,4 +1,4 @@
-export default function OrderValidator(accountId, ticketTypeRequests) {
+export default function orderValidator(accountId, ticketTypeRequests) {
   return (
     ValidateAccountId(accountId) &&
     CheckPresenceOfAdult(ticketTypeRequests) &&

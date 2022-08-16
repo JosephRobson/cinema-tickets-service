@@ -1,4 +1,4 @@
-import OrderValidator from "../../../src/services/orderValidator.js";
+import orderValidator from "../../../src/services/orderValidator.js";
 import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
@@ -15,18 +15,18 @@ const validTicketTypeRequests = [
 describe("Order Validator", () => {
   test("should fail an order with a negative accountId", () => {
     const negativeAccountId = -4;
-    expect(OrderValidator(negativeAccountId, validTicketTypeRequests)).toBe(
+    expect(orderValidator(negativeAccountId, validTicketTypeRequests)).toBe(
       false
     );
   });
 
   test("should fail an order with an accountId of 0", () => {
     const zeroAccountId = 0;
-    expect(OrderValidator(zeroAccountId, validTicketTypeRequests)).toBe(false);
+    expect(orderValidator(zeroAccountId, validTicketTypeRequests)).toBe(false);
   });
 
   test("should fail an order with zero tickets specified", () => {
-    expect(OrderValidator(validAccountId, [])).toBe(false);
+    expect(orderValidator(validAccountId, [])).toBe(false);
   });
 
   test("should fail an order with all tickets specified at quantity zero", () => {
@@ -36,7 +36,7 @@ describe("Order Validator", () => {
       new TicketTypeRequest(infantTicketString, 0),
     ];
 
-    expect(OrderValidator(validAccountId, noTickets)).toBe(false);
+    expect(orderValidator(validAccountId, noTickets)).toBe(false);
   });
 
   test("should fail an order when there are more infants than adults", () => {
@@ -46,7 +46,7 @@ describe("Order Validator", () => {
       new TicketTypeRequest(infantTicketString, 3),
     ];
 
-    expect(OrderValidator(validAccountId, moreInfantsThenAdults)).toBe(false);
+    expect(orderValidator(validAccountId, moreInfantsThenAdults)).toBe(false);
   });
 
   test("should fail an order when there are over 20 tickets", () => {
@@ -56,7 +56,7 @@ describe("Order Validator", () => {
       new TicketTypeRequest(infantTicketString, 1),
     ];
 
-    expect(OrderValidator(validAccountId, tooManyTickets)).toBe(false);
+    expect(orderValidator(validAccountId, tooManyTickets)).toBe(false);
   });
 
   test("should fail an order when there are no adults", () => {
@@ -66,26 +66,26 @@ describe("Order Validator", () => {
       new TicketTypeRequest(infantTicketString, 0),
     ];
 
-    expect(OrderValidator(validAccountId, noAdultsPresent)).toBe(false);
+    expect(orderValidator(validAccountId, noAdultsPresent)).toBe(false);
   });
 
   test("should return true on a valid order", () => {
-    expect(OrderValidator(validAccountId, validTicketTypeRequests)).toBe(true);
+    expect(orderValidator(validAccountId, validTicketTypeRequests)).toBe(true);
   });
 
   test("should not require all ticket types", () => {
     const onlyAdults = [new TicketTypeRequest(adultTicketString, 5)];
-    expect(OrderValidator(validAccountId, onlyAdults)).toBe(true);
+    expect(orderValidator(validAccountId, onlyAdults)).toBe(true);
   });
 
   test("should not fail an order due to a very large accountId", () => {
     const largeAccountId = 1234567890;
-    expect(OrderValidator(largeAccountId, validTicketTypeRequests)).toBe(true);
+    expect(orderValidator(largeAccountId, validTicketTypeRequests)).toBe(true);
   });
 
   test("should not fail an order due to exclusivley adults", () => {
     const allAdults = [new TicketTypeRequest(adultTicketString, 20)];
-    expect(OrderValidator(validAccountId, allAdults)).toBe(true);
+    expect(orderValidator(validAccountId, allAdults)).toBe(true);
   });
 
   test("should not fail an order due to mostly children", () => {
@@ -93,7 +93,7 @@ describe("Order Validator", () => {
       new TicketTypeRequest(adultTicketString, 1),
       new TicketTypeRequest(childTicketString, 19),
     ];
-    expect(OrderValidator(validAccountId, mostlyChildren)).toBe(true);
+    expect(orderValidator(validAccountId, mostlyChildren)).toBe(true);
   });
 
   test("should not fail an order due to even adults and infants", () => {
@@ -101,6 +101,6 @@ describe("Order Validator", () => {
       new TicketTypeRequest(adultTicketString, 10),
       new TicketTypeRequest(infantTicketString, 10),
     ];
-    expect(OrderValidator(validAccountId, evenAdultsAndInfants)).toBe(true);
+    expect(orderValidator(validAccountId, evenAdultsAndInfants)).toBe(true);
   });
 });

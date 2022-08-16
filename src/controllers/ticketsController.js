@@ -1,7 +1,7 @@
-import OrderBuilder from "../services/OrderBuilder.js";
-import OrderValidator from "../services/orderValidator.js";
-import SumOrderCost from "../services/orderCostCalculator.js";
-import SeatCounter from "../services/seatCounter.js";
+import orderBuilder from "../services/orderBuilder.js";
+import orderValidator from "../services/orderValidator.js";
+import sumOrderCost from "../services/orderCostCalculator.js";
+import seatCounter from "../services/seatCounter.js";
 import TicketPaymentService from "../thirdparty/paymentgateway/TicketPaymentService.js";
 import SeatReservationService from "../thirdparty/seatbooking/SeatReservationService.js";
 const seatReservationService = new SeatReservationService();
@@ -15,19 +15,19 @@ export const purchaseTickets = (req, res, next) => {
   );
   const accountId = req?.body?.accountId;
 
-  const order = OrderBuilder(req.body.tickets);
+  const order = orderBuilder(req.body.tickets);
 
-  if (!OrderValidator(accountId, order)) {
+  if (!orderValidator(accountId, order)) {
     const error = new Error("failed");
     error.status = 400;
     return next(error);
   }
 
   try {
-    const seatsRequired = SeatCounter(order);
+    const seatsRequired = seatCounter(order);
     seatReservationService.reserveSeat(accountId, seatsRequired);
 
-    const orderCost = SumOrderCost(order);
+    const orderCost = sumOrderCost(order);
     ticketPaymentService.makePayment(accountId, orderCost);
   } catch (error) {
     console.error(error);
