@@ -1,5 +1,5 @@
-import OrderCostCalculator from "../../src/services/orderCostCalculator.js";
-import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
+import OrderCostCalculator from "../../../src/services/orderCostCalculator.js";
+import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
 const childTicketString = "CHILD";

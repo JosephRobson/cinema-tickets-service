@@ -1,5 +1,5 @@
-import OrderBuilder from "../../src/services/orderBuilder";
-import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
+import OrderBuilder from "../../../src/services/orderBuilder";
+import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
 const childTicketString = "CHILD";

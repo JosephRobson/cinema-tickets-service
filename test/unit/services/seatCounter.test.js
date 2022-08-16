@@ -1,5 +1,5 @@
-import SeatCounter from "../../src/services/seatCounter.js";
-import TicketTypeRequest from "../../src/pairtest/lib/TicketTypeRequest.js";
+import SeatCounter from "../../../src/services/seatCounter.js";
+import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
 const childTicketString = "CHILD";
