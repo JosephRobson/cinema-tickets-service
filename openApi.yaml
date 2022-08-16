@@ -1,12 +1,69 @@
-openapi: '3.0.2'
+openapi: '3.0.0'
 info:
   title: Ticket Booking Service
   version: '1.0'
 servers:
-  - url: https://localhost:3000/
+  - url: /v1
 paths:
-  /v1/tickets/purchase:
-    $ref: "./swagger/tickets/purchase.yaml"
+  /tickets/purchase:
+    post:
+      #tags:
+      #  - tickets
+      summary: Submit an order and purchase a number of tickets
+      x-eov-operation-id: purchaseTickets
+      x-eov-operation-handler: "ticketsController"
+      requestBody:
+        # description: Takes an account ID and a quantity of tickets. If the order passes validation, seats will be booked and account will be charged
+        # required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order'
+      responses:
+        "201":
+          description: Successful order passed validation, seats were booked and account was charged.
+        "400":
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "500":
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+          
+        # $ref: "./swagger/tickets/purchase.yaml"
 components:
   schemas:
-    $ref: "./swagger/components/order.yaml"
+    order:
+      type: object
+      properties:
+        accountId:
+          type: integer
+          minimum: 1
+        tickets:
+          type: object
+          properties:
+            adult:
+              type: integer
+              minimum: 1
+            child:
+              type: integer
+            infant:
+              type: integer
+          required:
+            - adult
+      required:
+        - accountId
+        - tickets
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: string
+    # $ref: "./swagger/components/order.yaml"

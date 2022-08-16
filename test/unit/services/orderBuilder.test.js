@@ -1,4 +1,4 @@
-import OrderBuilder from "../../../src/services/orderBuilder";
+import OrderBuilder from "../../../src/services/orderBuilder.js";
 import TicketTypeRequest from "../../../src/pairtest/lib/TicketTypeRequest.js";
 
 const adultTicketString = "ADULT";
