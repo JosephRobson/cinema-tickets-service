@@ -1,18 +1,28 @@
 post:
-  tags:
-    - tickets
+  #tags:
+  #  - tickets
   summary: Submit an order and purchase a number of tickets
-  x-eov-operation-id: PurchaseTickets
+  x-eov-operation-id: purchaseTickets
   x-eov-operation-handler: "ticketsController"
   requestBody:
-    description: Takes an account ID and a quantity of tickets. If the order passes validation, seats will be booked and account will be charged
-    required: true
+    # description: Takes an account ID and a quantity of tickets. If the order passes validation, seats will be booked and account will be charged
+    # required: true
     content:
       application/json:
         schema:
-          $ref: '#components/schemas/order'
+          $ref: '../components/order.yaml'
   responses:
     "201":
       description: Successful order passed validation, seats were booked and account was charged.
     "400":
-      description: Invalid order.
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/error.yaml'
+    "500":
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/error.yaml'
