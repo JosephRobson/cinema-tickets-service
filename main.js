@@ -1,6 +1,6 @@
 import express from "express";
 import * as OpenApiValidator from "express-openapi-validator";
-import esmresolver from "./src/services/EsmResolver.js";
+import esmresolver from "./src/services/esmResolver.js";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 
