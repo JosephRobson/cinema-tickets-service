@@ -7,3 +7,6 @@ servers:
 paths:
   /v1/tickets/purchase:
     $ref: "./src/swagger/tickets/purchase.yaml"
+components:
+  schemas:
+    $ref: "./src/swagger/components/order.yaml"

@@ -1,0 +1,15 @@
+order:
+  type: object
+  properties:
+    accountId:
+      type: integer
+      minimum: 1
+    tickets:
+      type: object
+      properties:
+        adult:
+          type: integer
+        child:
+          type: integer
+        infant:
+          type: integer
