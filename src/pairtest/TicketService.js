@@ -35,10 +35,3 @@ export default class TicketService {
     }
   }
 }
-
-new TicketService().purchaseTickets(
-  123,
-  new TicketTypeRequest("ADULT", 2),
-  new TicketTypeRequest("INFANT", 1),
-  new TicketTypeRequest("CHILD", 1)
-);
