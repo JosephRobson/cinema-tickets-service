@@ -1,7 +1,17 @@
-import { ValidateAccountId } from "./ValidationRules";
+import {
+  ValidateAccountId,
+  IsValidNumberOfTickets,
+  IsAdultPresent,
+  IsEnoughAdultsForInfants,
+} from "./ValidationRules.js";
 
-export default OrderValidator = (accountId, ...ticketTypeRequests) => {
-  const result = ValidateAccountId(accountId);
-
-  return result;
+const OrderValidator = (accountId, ticketTypeRequests) => {
+  return (
+    ValidateAccountId(accountId) &&
+    IsValidNumberOfTickets(ticketTypeRequests) &&
+    IsAdultPresent(ticketTypeRequests) &&
+    IsEnoughAdultsForInfants(ticketTypeRequests)
+  );
 };
+
+export default OrderValidator;
