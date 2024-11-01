@@ -29,6 +29,9 @@ export default class TicketService {
         }
       }, 0);
       new SeatReservationService().reserveSeat(accountId, orderSeats);
+    } else {
+      // TODO throw unique exception for each failed validation rule and reason, catch it here, and respond with unique error.
+      throw new InvalidPurchaseException();
     }
   }
 }
