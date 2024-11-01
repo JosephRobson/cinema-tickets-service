@@ -3,17 +3,24 @@
  */
 
 export default class TicketTypeRequest {
+  // TODO bring out into tickets type object
+  static #ticketCosts = { ADULT: 2500, CHILD: 1500, INFANT: 0 };
+
   #type;
 
   #noOfTickets;
 
   constructor(type, noOfTickets) {
     if (!this.#Type.includes(type)) {
-      throw new TypeError(`type must be ${this.#Type.slice(0, -1).join(', ')}, or ${this.#Type.slice(-1)}`);
+      throw new TypeError(
+        `type must be ${this.#Type
+          .slice(0, -1)
+          .join(", ")}, or ${this.#Type.slice(-1)}`
+      );
     }
 
     if (!Number.isInteger(noOfTickets)) {
-      throw new TypeError('noOfTickets must be an integer');
+      throw new TypeError("noOfTickets must be an integer");
     }
 
     this.#type = type;
@@ -28,5 +35,12 @@ export default class TicketTypeRequest {
     return this.#type;
   }
 
-  #Type = ['ADULT', 'CHILD', 'INFANT'];
+  getTicketCost() {
+    return (
+      TicketTypeRequest.#ticketCosts[this.getTicketType()] *
+      this.getNoOfTickets()
+    );
+  }
+
+  #Type = ["ADULT", "CHILD", "INFANT"];
 }
